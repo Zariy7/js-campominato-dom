@@ -23,6 +23,8 @@ function gridGen(){
 
     let grid = document.getElementById('Grid');
     grid.innerHTML = ``;
+    document.getElementById('Score').innerText = ``;
+    safeClicks = 0;
     let bombsArray = [];
     bombsArray = bombGen((diffValue*diffValue));
     console.log(bombsArray);
@@ -69,6 +71,14 @@ function bombGen (valueMax){
     return array;
 }
 
+function removeClicks(){
+    let allSquares = document.getElementsByClassName('standard-square');
+    for(let i = 0; i<allSquares.length; i++){
+        allSquares[i].removeEventListener('click', bombClick);
+        allSquares[i].removeEventListener('click', safeClick);
+    }
+}
+
 //USER CLICKS ON BOMB
 function bombClick (){
     //ALL BOMBS GET REVEALED UPON CLICKING
@@ -78,18 +88,26 @@ function bombClick (){
         allBombs[i].classList.toggle("danger");
     }
     
-    //SQUARES ARE NOT CLICKABLE ANYMORE UPON CLICKING A BOMB
-    let allSquares = document.getElementsByClassName('standard-square');
-    for(let i = 0; i<allSquares.length; i++){
-        allSquares[i].removeEventListener('click', bombClick);
-        allSquares[i].removeEventListener('click', safeClick);
-    }
+    removeClicks();
+    document.getElementById('Score').innerText = `You lost!`;
 }
 
+let safeClicks = 0;
 //USER CLICKS ON SAFE SPOT
 function safeClick (){
     this.classList.toggle("safe");
     this.classList.toggle("basic");
+    this.removeEventListener('click', safeClick);
+
+    safeClicks++;
+    if(safeClicks == (document.getElementsByClassName('standard-square').length - document.getElementsByClassName('hidden-bomb').length))
+    {
+        removeClicks();
+        document.getElementById('Score').innerText = `You won!`;
+    }
+    else{
+        document.getElementById('Score').innerText = `Your score is: ${safeClicks}!`;
+    }
 }
 
 //DISTINGUISHES CLICKING ON A BOMB FROM CLICKING ON A SAFE SPOT.
