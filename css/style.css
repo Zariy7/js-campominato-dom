@@ -1,0 +1,23 @@
+*,
+*::before,
+*::after{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.custom-col{
+    border: 1px solid black;
+    background: rgb(192, 69, 90);
+    color: black;
+    width: calc(100vh / 10 - 10px);
+    height: calc(100vh / 10 - 10px);
+}
+
+.clicked-col{
+    border: 1px solid black;
+    background: rgb(109, 109, 226);
+    color: white;
+    width: calc(100vh / 10 - 10px);
+    height: calc(100vh / 10 - 10px);
+}
