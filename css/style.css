@@ -6,16 +6,10 @@
     box-sizing: border-box;
 }
 
-.custom-col{
+.basic{
     border: 1px solid black;
-    background: rgb(192, 69, 90);
+    background: rgb(83, 136, 4);
     color: black;
-}
-
-.clicked-col{
-    border: 1px solid black;
-    background: rgb(109, 109, 226);
-    color: white;
 }
 
 .standard-square{
@@ -28,4 +22,16 @@
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.danger{
+    border: 1px solid black;
+    background: rgb(192, 69, 90);
+    color: black;
+}
+
+.safe{
+    border: 1px solid black;
+    background: rgb(109, 109, 226);
+    color: white;
 }

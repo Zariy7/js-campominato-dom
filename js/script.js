@@ -36,16 +36,13 @@ function gridGen(){
         //COLUMN CREATION
         for(let j=0; j<diffValue; j++){
             let newCol = document.createElement('div');
-            newCol.classList.add("custom-col", "everything-center", "standard-square");
-            newCol.textContent = ((i+1)*diffValue)-(diffValue-(j+1));
+            newCol.classList.add("basic", "everything-center", "standard-square");
+            
+            let z = ((i+1)*diffValue)-(diffValue-(j+1));
+            newCol.textContent = z;
+
+            bombSort(bombsArray, z, newCol);
             newRow.appendChild(newCol);
-        
-            //FIRST BONUS
-            newCol.addEventListener('click', function(){
-                newCol.classList.toggle("clicked-col");
-                newCol.classList.toggle("custom-col");
-                console.log(newCol.textContent);
-            })
         }
     }
 }
@@ -64,5 +61,20 @@ function bombGen (valueMax){
         }
     }while(i<16);
 
-    return array;   
+    return array;
+}
+
+function bombSort (array, index, square){
+    if(array.includes(index)){
+        square.addEventListener('click', function(){
+            square.classList.toggle("danger");
+            console.log('BOOM!');
+        })
+    }
+    else{        
+        square.addEventListener('click', function(){
+            square.classList.toggle("safe");
+            console.log('No boom.');
+        })
+    }
 }
