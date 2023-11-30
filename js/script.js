@@ -30,13 +30,13 @@ function gridGen(){
     //ROW CREATION
     for(let i=0; i<diffValue; i++){
         let newRow = document.createElement('div');
-        newRow.classList.add("d-flex", "align-items-center", "justify-content-center");
+        newRow.classList.add("everything-center");
         grid.appendChild(newRow);
 
         //COLUMN CREATION
         for(let j=0; j<diffValue; j++){
             let newCol = document.createElement('div');
-            newCol.classList.add("custom-col", "d-flex", "align-items-center", "justify-content-center", "mx-1", "my-1");
+            newCol.classList.add("custom-col", "everything-center", "standard-square");
             newCol.textContent = ((i+1)*diffValue)-(diffValue-(j+1));
             newRow.appendChild(newCol);
         

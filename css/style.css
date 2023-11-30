@@ -10,14 +10,22 @@
     border: 1px solid black;
     background: rgb(192, 69, 90);
     color: black;
-    width: calc(100vh / 10 - 10px);
-    height: calc(100vh / 10 - 10px);
 }
 
 .clicked-col{
     border: 1px solid black;
     background: rgb(109, 109, 226);
     color: white;
+}
+
+.standard-square{
     width: calc(100vh / 10 - 10px);
     height: calc(100vh / 10 - 10px);
+    margin: 0.5rem;
+}
+
+.everything-center{
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
