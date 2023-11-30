@@ -23,7 +23,9 @@ function gridGen(){
 
     let grid = document.getElementById('Grid');
     grid.innerHTML = ``;
-    let z = 0;
+    let bombsArray = [];
+    bombsArray = bombGen((diffValue*diffValue));
+    console.log(bombsArray);
 
     //ROW CREATION
     for(let i=0; i<diffValue; i++){
@@ -35,8 +37,7 @@ function gridGen(){
         for(let j=0; j<diffValue; j++){
             let newCol = document.createElement('div');
             newCol.classList.add("custom-col", "d-flex", "align-items-center", "justify-content-center", "mx-1", "my-1");
-            newCol.textContent = (z+1);
-            z++;
+            newCol.textContent = ((i+1)*diffValue)-(diffValue-(j+1));
             newRow.appendChild(newCol);
         
             //FIRST BONUS
@@ -47,4 +48,21 @@ function gridGen(){
             })
         }
     }
+}
+
+function bombGen (valueMax){
+    let array = [];
+    let randomNumber;
+    let i = 0;
+
+    do{
+        randomNumber = Math.floor(Math.random() * valueMax) +1;
+
+        if(!array.includes(randomNumber)){
+            array[i]=randomNumber;
+            i++;
+        }
+    }while(i<16);
+
+    return array;   
 }
